@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{height: 100%; width: 100%;}
+        *{margin: 0; -webkit-tap-highlight-color: transparent; outline: none; padding: 0; user-select: none; box-sizing: border-box; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
+        nav{
+    background-color: rgb(219, 219, 219);
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+}   
+.menu-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 100px;
+    transition: all 500ms ease-in-out;
+    cursor: pointer;
+}
+.line{
+    height: 6px;
+    width: 50px;
+    background: #444;
+    transition: all 500ms ease-in-out;
+    border-radius: 5px;
+}
+.line::after,.line::before{
+    content: "";
+    position: absolute;
+    width: 50px;
+    height:6px;
+    background:#444;
+    border-radius: 5px;
+     transition: all 500ms ease-in-out;
+}
+.line::after{
+    transform: translateY(-16px);
+}
+.line::before{
+    transform: translateY(16px);
+}
+
+
+
+.active-menu-btn  .line:first-child{
+        transform: translateX(-50px);
+        background:transparent;
+        box-shadow: none;
+        transition-duration: 500ms;
+    }
+
+    .active-menu-btn .line::before{
+        rotate: -45deg;
+        transform: translate(35px,35px);
+        transition-duration: 500ms;
+
+
+    }
+    .active-menu-btn .line::after{
+        rotate: 45deg;
+        transform: translate(35px,-35px);
+        transition-duration: 500ms;
+
+    }
+    
+
+
+.sidebar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 100%;
+    color: rgb(27, 24, 24);
+    background-color: rgb(20, 20, 20);
+    pointer-events: all;
+    text-align: center;
+    transition: margin-left 500ms;
+    width: 40%;
+    margin-left: -40%;
+
+}
+
+.active-sidebar{
+    margin-left: 0%;
+    transition: margin-left 500ms;
+}
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a class="menu-btn">
+            <span class='line'></span>
+        </a>
+    </nav>
+    <div class="sidebar">
+    </div>
+
+    <script>
+const btn = document.querySelector('.menu-btn')
+const sidebar = document.querySelector('.sidebar')
+btn.addEventListener("click",function(){
+    btn.classList.toggle('active-menu-btn')
+    sidebar.classList.toggle('active-sidebar')
+
+
+})
+        
+</script>
+</body>
+</html>
